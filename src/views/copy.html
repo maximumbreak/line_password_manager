@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      button {
+        width: 100%;
+        background-color: #3949ab;
+        color: white;
+        padding: 12px 20px;
+        margin: 14px 0 8px 0;
+        border-radius: 4px;
+        box-shadow: inset 0 1px 3px #3949ab;
+        border-color: #3949ab;
+      }
+      input {
+        width: 100%;
+        border-radius: 4px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin: 8x 0;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        box-shadow: inset 0 1px 3px #ddd;
+        box-sizing: border-box;
+        display: inline-block;
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="foo" value="{{ password }}" />
+    <button onclick="copy('foo')">
+      Copy Password
+    </button>
+  </body>
+</html>
+
+<script>
+  var copy = function(elementId) {
+    var input = document.getElementById(elementId)
+    var isiOSDevice = navigator.userAgent.match(/ipad|iphone/i)
+
+    if (isiOSDevice) {
+      var editable = input.contentEditable
+      var readOnly = input.readOnly
+
+      input.contentEditable = true
+      input.readOnly = false
+
+      var range = document.createRange()
+      range.selectNodeContents(input)
+
+      var selection = window.getSelection()
+      selection.removeAllRanges()
+      selection.addRange(range)
+
+      input.setSelectionRange(0, 999999)
+      input.contentEditable = editable
+      input.readOnly = readOnly
+    } else {
+      input.select()
+    }
+
+    document.execCommand('copy')
+  }
+</script>

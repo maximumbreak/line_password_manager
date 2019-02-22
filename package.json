@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "@google-cloud/firestore": "^1.0.1",
+    "body-parser": "^1.18.3",
+    "consolidate": "^0.15.1",
+    "cors": "^2.8.5",
+    "delay": "^4.1.0",
+    "express": "^4.16.4",
+    "mustache": "^3.0.1",
+    "request": "^2.88.0"
+  }
+}
